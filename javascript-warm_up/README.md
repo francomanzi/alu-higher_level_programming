@@ -1,1 +1,1 @@
-Programming . is cool
+Programming in Javascript is cool

@@ -1,3 +1,4 @@
+#!/usr/bin/node
 t requ = require('request');
 const apiUrl = process.argv.slice(2)[0];
 

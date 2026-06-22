@@ -1,3 +1,4 @@
+#!/usr/bin/node
 t requ = require('request');
 const fs = require('fs');
 const file = process.argv.slice(2);

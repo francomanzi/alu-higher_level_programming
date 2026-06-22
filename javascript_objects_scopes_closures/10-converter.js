@@ -1,0 +1,7 @@
+#!/usr/bin/node
+rts.converter = function (base) {
+  return function (number) {
+    return number.toString(base);
+  };
+};
+

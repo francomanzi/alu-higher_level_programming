@@ -8,10 +8,9 @@ request(url, (error, response, body) => {
     console.log(error);
   } else {
     const data = JSON.parse(body);
-    const wedgeUrl = 'https://swapi-api.alx-tools.com/api/people/18/';
     let count = 0;
     for (const film of data.results) {
-      if (film.characters.includes(wedgeUrl)) {
+      if (film.characters.some((c) => c.includes('/people/18/'))) {
         count++;
       }
     }

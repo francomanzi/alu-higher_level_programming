@@ -1,24 +1,22 @@
 #!/usr/bin/node
-t requ = require('request');
-const apiUrl = process.argv.slice(2)[0];
+const request = require('request');
 
-requ(apiUrl, (error, response, body) => {
+const url = process.argv[2];
+
+request(url, (error, response, body) => {
   if (error) {
     console.log(error);
-    return;
-  }
-
-  const todos = JSON.parse(body);
-  const taskCompletedByUser = {};
-
-  todos.forEach(todo => {
-    if (todo.completed) {
-      if (taskCompletedByUser[todo.userId] === undefined) {
-        taskCompletedByUser[todo.userId] = 1;
-      } else {
-        taskCompletedByUser[todo.userId] += 1;
+  } else {
+    const todos = JSON.parse(body);
+    const completed = {};
+    for (const todo of todos) {
+      if (todo.completed) {
+        if (completed[todo.userId] === undefined) {
+          completed[todo.userId] = 0;
+        }
+        completed[todo.userId]++;
       }
     }
-  });
-  console.log(taskCompletedByUser);
+    console.log(completed);
+  }
 });
